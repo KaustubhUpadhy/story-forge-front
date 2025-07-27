@@ -16,33 +16,7 @@ interface Chat {
   unread?: boolean;
 }
 
-const mockChats: Chat[] = [
-  {
-    id: "1",
-    title: "The Enchanted Forest Quest",
-    lastMessage: "You notice a glimmer of light through the thick canopy...",
-    timestamp: "2 hours ago",
-    unread: true,
-  },
-  {
-    id: "2", 
-    title: "Dragon's Lair Adventure",
-    lastMessage: "The ancient dragon stirs as you approach...",
-    timestamp: "1 day ago",
-  },
-  {
-    id: "3",
-    title: "Pirate's Treasure Hunt",
-    lastMessage: "X marks the spot on the weathered map...",
-    timestamp: "3 days ago",
-  },
-  {
-    id: "4",
-    title: "Space Station Mystery",
-    lastMessage: "The airlock hisses open revealing...",
-    timestamp: "1 week ago",
-  },
-];
+const mockChats: Chat[] = [];
 
 const Chats = () => {
   const [selectedChat, setSelectedChat] = useState<string | null>(mockChats[0]?.id || null);
@@ -80,27 +54,18 @@ const Chats = () => {
           </div>
 
           <ScrollArea className="h-full">
-            <div className="space-y-1 p-2">
-              {filteredChats.map((chat) => (
-                <div
-                  key={chat.id}
-                  className={`p-3 rounded-lg cursor-pointer transition-colors hover:bg-accent ${
-                    selectedChat === chat.id ? "bg-accent" : ""
-                  }`}
-                  onClick={() => setSelectedChat(chat.id)}
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-medium text-sm truncate">{chat.title}</h3>
-                        {chat.unread && <Badge variant="secondary" className="h-2 w-2 p-0 rounded-full" />}
-                      </div>
-                      <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{chat.lastMessage}</p>
-                      <p className="text-xs text-muted-foreground mt-2">{chat.timestamp}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+            <div className="flex flex-col items-center justify-center h-64 text-center space-y-4 p-4">
+              <MessageSquare className="h-12 w-12 text-muted-foreground/50" />
+              <div className="space-y-2">
+                <h3 className="font-medium text-muted-foreground">No Adventures Yet</h3>
+                <p className="text-sm text-muted-foreground/70">
+                  Start your first adventure to see your stories here
+                </p>
+              </div>
+              <Button className="gradient-primary">
+                <Plus className="h-4 w-4 mr-2" />
+                Begin New Adventure
+              </Button>
             </div>
           </ScrollArea>
         </div>
