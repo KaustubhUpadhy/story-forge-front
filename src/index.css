@@ -2,6 +2,128 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 220 7% 3%;
+    --foreground: 210 20% 98%;
+    --card: 224 8% 5%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 8% 5%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 28 100% 58%;
+    --primary-foreground: 220 7% 3%;
+    --secondary: 215 20% 11%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 20% 11%;
+    --muted-foreground: 217 10% 64%;
+    --accent: 215 20% 11%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 15% 15%;
+    --input: 215 15% 15%;
+    --ring: 28 100% 58%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --radius: 0.5rem;
+    
+    /* Custom design tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(28 100% 58%), hsl(38 92% 50%));
+    --gradient-secondary: linear-gradient(135deg, hsl(215 20% 11%), hsl(220 7% 3%));
+    --shadow-glow: 0 0 40px hsl(28 100% 58% / 0.15);
+    --shadow-elegant: 0 10px 30px -10px hsl(28 100% 58% / 0.1);
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 28 100% 58%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 98%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 98%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 28 100% 58%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    
+    /* Custom design tokens for light mode */
+    --gradient-primary: linear-gradient(135deg, hsl(28 100% 58%), hsl(38 92% 50%));
+    --gradient-secondary: linear-gradient(135deg, hsl(210 40% 98%), hsl(220 30% 95%));
+    --shadow-glow: 0 0 40px hsl(28 100% 58% / 0.1);
+    --shadow-elegant: 0 10px 30px -10px hsl(28 100% 58% / 0.05);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 20px hsl(28 100% 58% / 0.3));
+  }
+  to {
+    filter: drop-shadow(0 0 30px hsl(28 100% 58% / 0.5));
+  }
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
